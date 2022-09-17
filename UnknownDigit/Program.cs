@@ -1,5 +1,7 @@
 ﻿using System;
+using UnknownDigit;
 
-var expression = "[123*45?=5="
+const string expression = "123*45?=5?088";
+var result = UnknownDigitFinder.SolveExpression(expression);
 
-Console.WriteLine("Hello, World!");
+Console.WriteLine(result);
