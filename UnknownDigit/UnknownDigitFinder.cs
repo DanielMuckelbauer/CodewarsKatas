@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace UnknownDigit;
 
@@ -22,9 +23,27 @@ public static class UnknownDigitFinder
         return new()
         {
             Operand1 = parts[0],
+            Operand1UnknownIndices = GetQuestionMarkIndices(parts[0]),
             Operator = op,
             Operand2 = parts[1],
-            Result = parts[2]
+            Operand2UnknownIndices = GetQuestionMarkIndices(parts[1]),
+            Result = parts[2],
+            ResultUnknownIndices = GetQuestionMarkIndices(parts[2])
         };
+    }
+
+    private static IEnumerable<int> GetQuestionMarkIndices(string operand)
+    {
+        var index = 0;
+        var list = new List<int>();
+        while (index != -1)
+        {
+            index = operand.IndexOf('?', index + 1);
+            if (index >= 0)
+            {
+                list.Add(index);
+            }
+        }
+        return list;
     }
 }
