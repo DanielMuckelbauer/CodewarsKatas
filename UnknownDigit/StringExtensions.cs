@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace UnknownDigit;
 
-public static class QuestionMarkLocator
+public static class StringExtensions
 {
     public static IEnumerable<int> LocateCharacterIndices(this string theString, char theChar)
         => theString
