@@ -1,18 +1,14 @@
-﻿using System.Collections.Generic;
-
-namespace UnknownDigit;
+﻿namespace UnknownDigit;
 
 public class ExpressionValue
 {
-    private string Amount { get; set; }
-    private int Factor { get; set; }
-    private IEnumerable<int> UnknownDigitsOfAmount { get; set; }
+    private string Amount { get; }
+    private int Factor { get; }
 
     public ExpressionValue(string capturedGroup)
     {
         Amount = capturedGroup.TrimStart('-');
         Factor = capturedGroup.StartsWith('-') ? -1 : 1;
-        UnknownDigitsOfAmount = capturedGroup.LocateCharacterIndices('?');
     }
 
     public int SubstituteUnknown(int i)
