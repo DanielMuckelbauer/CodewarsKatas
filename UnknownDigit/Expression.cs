@@ -8,6 +8,5 @@ public class Expression
     public ExpressionValue Operand2 { get; set; }
     public ExpressionValue Result { get; set; }
     public string Operator { get; set; }
-    public bool IsZeroInvalid { get; set; }
     public IEnumerable<int> IncludedNumbers { get; set; }
 }

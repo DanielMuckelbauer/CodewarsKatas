@@ -14,7 +14,6 @@ public class ExpressionParserTests
             Operand2 = new("-2?"),
             Result = new("-5?0"),
             Operator = "-",
-            IsZeroInvalid = false,
             IncludedNumbers = new[] { 1, 2, 5, 0 }
         };
 

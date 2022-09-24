@@ -15,7 +15,7 @@ public static class UnknownDigitFinder
     {
         for (var i = 0; i < 10; i++)
         {
-            if ((i == 0 && expression.IsZeroInvalid) || expression.IncludedNumbers.Contains(i))
+            if (expression.IncludedNumbers.Contains(i))
             {
                 continue;
             }

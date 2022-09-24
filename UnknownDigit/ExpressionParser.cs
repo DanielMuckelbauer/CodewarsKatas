@@ -16,14 +16,21 @@ public static class ExpressionParser
             Operand2 = new(capturingGroups[3].Value),
             Result = new(capturingGroups[4].Value),
             Operator = capturingGroups[2].Value,
-            IsZeroInvalid = expression.Contains("??"),
             IncludedNumbers = GetIncludedNumbers(expression)
         };
     }
 
     private static IEnumerable<int> GetIncludedNumbers(string expression)
-        => expression
+    {
+        var includedNumbers = expression
             .ToCharArray()
             .Where(character => int.TryParse(character.ToString(), out _))
-            .Select(character => int.Parse(character.ToString()));
+            .Select(character => int.Parse(character.ToString()))
+            .ToList();
+        if (expression.Contains("??"))
+        {
+            includedNumbers.Add(0);
+        }
+        return includedNumbers;
+    }
 }
