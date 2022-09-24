@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace UnknownDigit;
 
@@ -14,6 +15,11 @@ public static class UnknownDigitFinder
     {
         for (var i = 0; i < 10; i++)
         {
+            if ((i == 0 && expression.IsZeroInvalid) || expression.IncludedNumbers.Contains(i))
+            {
+                continue;
+            }
+
             var operand1 = expression.Operand1.SubstituteUnknown(i);
             var operand2 = expression.Operand2.SubstituteUnknown(i);
             var expectedResult = expression.Result.SubstituteUnknown(i);
