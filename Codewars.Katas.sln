@@ -6,6 +6,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortBinaryTree", "SortBinar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnknownDigit", "UnknownDigit\UnknownDigit.csproj", "{DF072EA7-8E02-4F7F-AA42-F28F3119733D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01UnknownDigit", "01UnknownDigit", "{9772B28C-CB32-4F72-9067-3AF3B2A3D144}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnknownDigit.Tests", "UnknownDigit.Tests\UnknownDigit.Tests.csproj", "{D263F464-83C8-46BB-B71F-E222E8744D6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{DF072EA7-8E02-4F7F-AA42-F28F3119733D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF072EA7-8E02-4F7F-AA42-F28F3119733D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF072EA7-8E02-4F7F-AA42-F28F3119733D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D263F464-83C8-46BB-B71F-E222E8744D6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D263F464-83C8-46BB-B71F-E222E8744D6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D263F464-83C8-46BB-B71F-E222E8744D6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D263F464-83C8-46BB-B71F-E222E8744D6D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D263F464-83C8-46BB-B71F-E222E8744D6D} = {9772B28C-CB32-4F72-9067-3AF3B2A3D144}
+		{DF072EA7-8E02-4F7F-AA42-F28F3119733D} = {9772B28C-CB32-4F72-9067-3AF3B2A3D144}
 	EndGlobalSection
 EndGlobal

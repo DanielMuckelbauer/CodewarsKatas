@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
+﻿using System;
+using System.Linq;
 
 namespace UnknownDigit;
 
@@ -7,43 +7,35 @@ public static class UnknownDigitFinder
 {
     public static int SolveExpression(string expression)
     {
-        var parsedExpression = ParseExpression(expression);
+        var parsedExpression = ExpressionParser.Parse(expression);
         return SolveExpression(parsedExpression);
     }
 
     private static int SolveExpression(Expression expression)
     {
-        return -1;
-    }
-
-    private static Expression ParseExpression(string expression)
-    {
-        var parts = expression.Split('*', '+', '-', '=');
-        var op = Regex.Match(expression, @"[\+|-|\*|]").Value;
-        return new()
+        for (var i = 0; i < 10; i++)
         {
-            Operand1 = parts[0],
-            Operand1UnknownIndices = GetQuestionMarkIndices(parts[0]),
-            Operator = op,
-            Operand2 = parts[1],
-            Operand2UnknownIndices = GetQuestionMarkIndices(parts[1]),
-            Result = parts[2],
-            ResultUnknownIndices = GetQuestionMarkIndices(parts[2])
-        };
-    }
-
-    private static IEnumerable<int> GetQuestionMarkIndices(string operand)
-    {
-        var index = 0;
-        var list = new List<int>();
-        while (index != -1)
-        {
-            index = operand.IndexOf('?', index + 1);
-            if (index >= 0)
+            if (expression.IncludedNumbers.Contains(i))
             {
-                list.Add(index);
+                continue;
+            }
+
+            var operand1 = expression.Operand1.SubstituteUnknown(i);
+            var operand2 = expression.Operand2.SubstituteUnknown(i);
+            var expectedResult = expression.Result.SubstituteUnknown(i);
+            var calculatedResult = expression.Operator switch
+            {
+                "+" => operand1 + operand2,
+                "-" => operand1 - operand2,
+                "*" => operand1 * operand2,
+                _ => throw new ArgumentOutOfRangeException()
+            };
+            if (calculatedResult == expectedResult)
+            {
+                return i;
             }
         }
-        return list;
+
+        return -1;
     }
 }
